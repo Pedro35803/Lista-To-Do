@@ -39,8 +39,37 @@ body {
     border-radius: 10px;
     width: 750px;
     height: 65px;
+
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+#entrada-pesquisa {
+    font-size: 17.5px;
+    width: 650px;
+    height: 40px;
+    padding-left: 15px;
+}
+
+#entrada-pesquisa::placeholder {
+    color: black;
+    font-weight: bold;
+    font-size: 17.5px;
+}
+
+#entrada-pesquisa:focus {
+    outline: 0;
+}
+
+#botao-pesquisa {
+    background-color: white;
+    height: 40px;
+    width: 50px;
+}
+
+#botao-pesquisa img {
+    height: 20px;
 }
 
 #container-tarefas {
