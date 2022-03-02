@@ -1,0 +1,51 @@
+* {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(63.18deg, #472F9F 0%, #0070E4 20%, #009FDF 50%, rgba(0, 197, 146, 0.72) 65%, rgba(78, 224, 0, 0.86) 85.97%) no-repeat;
+    height: 100vh;
+}
+
+.flex {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.34);
+    border-radius: 10px;
+    width: 900px;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container h1 {
+    font-size: 2.5em;
+}
+
+.container-pesquisa {
+    background-color: #E5E5E5;
+    border-radius: 10px;
+    width: 750px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+}
+
+#container-tarefas {
+    background-color: #E5E5E5;
+    width: 750px;
+    height: 300px;
+    margin-bottom: 25px;
+}
