@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +11,28 @@
     <main class="flex">
         <main class="container">
             <h1>Lista To-Do</h1>
+            
             <main class="container-pesquisa">
                 <input type="text" placeholder="Pesquisa" id="entrada-pesquisa">
                 <button id="botao-pesquisa">
                     <img src="img/lupa.svg" alt="Pesquisar">
                 </button>
             </main>
-            <main id="container-tarefas"></main>
+
+            <main id="container-principal">
+                <main id="container-tarefas">
+                    <section class="tarefas">
+                        <input type="checkbox" class="tarefas-checkout">
+                        <input type="text" class="tarefas-texto" placeholder="Digite aqui ">
+                        <img src="img/editar.svg" alt="" class="tarefas-img">
+                        <img src="img/lixeira.svg" alt="" class="tarefas-img">
+                    </section>
+                </main>
+
+                <figure class="figure_new_task">
+                    <img id="adicionar_tarefa" src="img/pluss_circle.svg" alt="Adicionar Tarefa">
+                </figure>
+            </main>
         </main>
     </main>
     <script src="js/script.js"></script>
