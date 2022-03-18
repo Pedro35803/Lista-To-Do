@@ -46,9 +46,21 @@ document.querySelector("#container-tarefas").addEventListener("click", (event) =
         console.log("editando...");
     } else if (elementoEvento.classList.contains("tarefas-checkout")) {
         if (elementoEvento.checked) {
-            console.log("Tarefa Finalizada");
+            tarefaConcluida(elementoPai);
         } else {
-            console.log("Tarefa posta novamente para fazer");
+            retirarDasTarefaConcluida(elementoPai);
         }
     }
 })
+
+function tarefaConcluida(container) {
+    let classText = "#" + container.id + " .tarefas-texto";
+    let text = document.querySelector(classText);
+    text.classList.add("text-tarefa-concluida");
+}
+
+function retirarDasTarefaConcluida(container) {
+    let classText = "#" + container.id + " .tarefas-texto";
+    let text = document.querySelector(classText);
+    text.classList.remove("text-tarefa-concluida");
+}
