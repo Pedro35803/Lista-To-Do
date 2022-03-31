@@ -85,7 +85,7 @@ function editandoTexto(containerPai) {
 }
 
 function excluirTarefa(containerPai) {
-    containerPai.style.display = "none";
+    containerPai.classList.add("ocultarElemento");
     listaTarefas.splice(containerPai.id, 1);
 }
 
@@ -98,27 +98,28 @@ function inputTextElement(elementId) {
 function pesquisar() {
     let texto = document.querySelector("#entrada-pesquisa").value;
     let listaFiltrada = listaTarefas.filter((elementId) => filterFunction(texto, elementId));
-    retirarElementos();
+    retirarElementos(listaTarefas);
     adicionarElementos(listaFiltrada);
 }
 
 function filterFunction(value, elementID) {
     let elementText = inputTextElement(elementID).value;
-    if (elementText.indexOf(value) != -1) {
+    elementText = elementText.toLowerCase();
+    if (elementText.indexOf(value.toLowerCase()) != -1) {
         return true;
     }
 }
 
-function retirarElementos() {
-    for (let cont = 0; cont < listaTarefas.length; cont++) {
+function retirarElementos(lista) {
+    for (let cont = 0; cont < lista.length; cont++) {
         let element = document.querySelector("#" + listaTarefas[cont]);
-        element.style.display = 'none';
+        element.classList.add("ocultarElemento");
     }
 }
 
 function adicionarElementos(lista) {
-    for (let cont = 0; cont < listaTarefas.length; cont++) {
+    for (let cont = 0; cont < lista.length; cont++) {
         let element = document.querySelector("#" + lista[cont]);
-        element.style.display = 'flex';
+        element.classList.remove("ocultarElemento");
     }
 }
