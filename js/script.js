@@ -1,4 +1,4 @@
-let listaTarefas = ["tarefa_0"];
+let listaTarefas = [];
 let contadorID = 0;
 
 document.querySelector("#botao-pesquisa").addEventListener("click", () => pesquisar())
