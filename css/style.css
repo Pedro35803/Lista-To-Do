@@ -70,6 +70,7 @@ body {
 
 #botao-pesquisa img {
     height: 20px;
+    cursor: pointer;
 }
 
 #container-principal {
@@ -78,13 +79,29 @@ body {
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+}
+
+#container-principal-tarefas {
+    height: 250px;
+    overflow: auto;
+    justify-content: space-around;
+}
+
+.container-principal-h2 {
+    margin: 10px 0px -10px 0px;
 }
 
 #container-tarefas {
     width: 100%;
-    height: 225px;
-    overflow: auto;
+    /* height: 125px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-tarefas-feitas {
+    border-top: 1px solid blue;
+    margin: 22.5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,7 +110,7 @@ body {
 .tarefas {
     background-color: white;
     min-height: 40px;
-    width: 95%;
+    width: 712.5px;
     margin-top: 20px;
     display: flex;
     align-items: center;
