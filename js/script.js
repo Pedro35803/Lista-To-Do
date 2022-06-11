@@ -27,17 +27,16 @@ document.querySelector("#container-principal-tarefas").addEventListener("click",
     const elementoPai = event.path[1];
 
     if (elementoEvento.classList.contains("excluir")) {
-        const elementoStatusTarefa = event.path[2];
-        excluirTarefa(elementoStatusTarefa, elementoPai);
+        excluirTarefa(elementoPai);
     } else if (elementoEvento.classList.contains("editar")) {
         editandoTexto(elementoPai);
     } else if (elementoEvento.classList.contains("tarefas-checkout")) {
         if (elementoEvento.checked) {
             mudarStatusDaTarefa(elementoPai);
-            moverContainer(elementoPai, "#container-tarefas", "#container-tarefas-feitas");
+            moverContainer(elementoPai, "#container-tarefas-feitas");
         } else {
             mudarStatusDaTarefa(elementoPai);
-            moverContainer(elementoPai, "#container-tarefas-feitas", "#container-tarefas");
+            moverContainer(elementoPai, "#container-tarefas");
         }
     }
 });
@@ -51,10 +50,9 @@ function mudarStatusDaTarefa(containerPai) {
     text.classList.toggle("text-tarefa-concluida");
 }
 
-function moverContainer(container, sectionSair, sectionEntrar) {
-    let velhaSection = document.querySelector(sectionSair);
+function moverContainer(container, sectionEntrar) {
     let novaSection = document.querySelector(sectionEntrar);
-    velhaSection.removeChild(container);
+    container.remove();
     novaSection.appendChild(container);
 }
 
@@ -63,10 +61,9 @@ function editandoTexto(containerPai) {
     text.focus();
 }
 
-function excluirTarefa(containerPai, elementoRemover) {
-    containerPai.removeChild(elementoRemover);
-    // elementoRemover.remove()
-    listaTarefas.splice(containerPai.id, 1);
+function excluirTarefa(elementoRemover) {
+    elementoRemover.remove();
+    listaTarefas.splice(elementoRemover.id, 1);
     atualizarStorage();
 }
 
