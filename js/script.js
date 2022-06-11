@@ -1,6 +1,13 @@
 let listaTarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 let contadorID = 0;
 
+const todasTarefasNaPagina = document.querySelectorAll(".tarefas-texto");
+
+todasTarefasNaPagina.forEach(tarefa => tarefa.addEventListener('blur', (tarefa) => {
+    console.log(tarefa);
+    atualizarStorage;
+}));
+
 document.querySelector("#botao-pesquisa").addEventListener("click", () => pesquisar())
 document.querySelector("#entrada-pesquisa").addEventListener("keydown", (event) => {
     if (event.key == "Enter") {
@@ -14,11 +21,12 @@ document.querySelector("#adicionar_tarefa").addEventListener('click', () => {
 });
 
 document.querySelector("#container-principal-tarefas").addEventListener("click", (event) => {
-    let elementoEvento = event.path[0];
-    let elementoPai = event.path[1];
+    const elementoEvento = event.path[0];
+    const elementoPai = event.path[1];
 
     if (elementoEvento.classList.contains("excluir")) {
-        excluirTarefa(elementoPai);
+        const elementoStatusTarefa = event.path[2];
+        excluirTarefa(elementoStatusTarefa, elementoPai);
     } else if (elementoEvento.classList.contains("editar")) {
         editandoTexto(elementoPai);
     } else if (elementoEvento.classList.contains("tarefas-checkout")) {
@@ -31,6 +39,10 @@ document.querySelector("#container-principal-tarefas").addEventListener("click",
         }
     }
 });
+
+function atualizarStorage() {
+    localStorage.tarefas = JSON.stringify(listaTarefas);
+}
 
 function mudarStatusDaTarefa(containerPai) {
     let text = inputTextElement(containerPai.id);
@@ -49,9 +61,10 @@ function editandoTexto(containerPai) {
     text.focus();
 }
 
-function excluirTarefa(containerPai) {
-    containerPai.classList.add("ocultarElemento");
+function excluirTarefa(containerPai, elementoRemover) {
+    containerPai.removeChild(elementoRemover);
     listaTarefas.splice(containerPai.id, 1);
+    atualizarStorage();
 }
 
 function inputTextElement(elementId) {
