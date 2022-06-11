@@ -1,4 +1,4 @@
-let listaTarefas = [];
+let listaTarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 let contadorID = 0;
 
 document.querySelector("#botao-pesquisa").addEventListener("click", () => pesquisar())
@@ -6,46 +6,11 @@ document.querySelector("#entrada-pesquisa").addEventListener("keydown", (event) 
     if (event.key == "Enter") {
         pesquisar();
     }
-})
+});
 
 document.querySelector("#adicionar_tarefa").addEventListener('click', () => {    
     contadorID += 1;
-
-    let main = document.querySelector("#container-tarefas");
-    let section = document.createElement("section");
-    let checkbox = document.createElement("input");
-    let text = document.createElement("input");
-    let edit = document.createElement("img");
-    let delet = document.createElement("img");
-    
-    section.id = "tarefa_" + contadorID;
-
-    checkbox.type = "checkbox";
-    text.type = "text";
-
-    text.placeholder = "Digite aqui ";
-
-    edit.src = "./img/editar.svg";
-    delet.src = "./img/lixeira.svg";
-
-    edit.alt = "Editar";
-    delet.alt = "Excluir";
-
-    section.classList.add("tarefas");
-    checkbox.classList.add("tarefas-checkout");
-    text.classList.add("tarefas-texto");
-    edit.classList.add("tarefas-img", "editar");
-    delet.classList.add("tarefas-img", "excluir");
-    
-    section.appendChild(checkbox);
-    section.appendChild(text);
-    section.appendChild(edit);
-    section.appendChild(delet);
-    main.appendChild(section);
-
-    text.focus();
-
-    listaTarefas.push(section.id);
+    adicionarTarefaNaPagina();
 });
 
 document.querySelector("#container-principal-tarefas").addEventListener("click", (event) => {
@@ -122,4 +87,40 @@ function adicionarElementos(lista) {
         let element = document.querySelector("#" + lista[cont]);
         element.classList.remove("ocultarElemento");
     }
+}
+
+function adicionarTarefaNaPagina() {
+    let main = document.querySelector("#container-tarefas");
+    let section = document.createElement("section");
+    let checkbox = document.createElement("input");
+    let text = document.createElement("input");
+    let edit = document.createElement("img");
+    let delet = document.createElement("img");
+    
+    section.id = "tarefa_" + contadorID;
+
+    checkbox.type = "checkbox";
+    text.type = "text";
+
+    text.placeholder = "Digite aqui ";
+
+    edit.src = "./img/editar.svg";
+    delet.src = "./img/lixeira.svg";
+
+    edit.alt = "Editar";
+    delet.alt = "Excluir";
+
+    section.classList.add("tarefas");
+    checkbox.classList.add("tarefas-checkout");
+    text.classList.add("tarefas-texto");
+    edit.classList.add("tarefas-img", "editar");
+    delet.classList.add("tarefas-img", "excluir");
+    
+    section.appendChild(checkbox);
+    section.appendChild(text);
+    section.appendChild(edit);
+    section.appendChild(delet);
+    main.appendChild(section);
+
+    text.focus();
 }
