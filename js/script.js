@@ -1,3 +1,5 @@
+import pesquisar from './pesquisar.js';
+
 let listaTarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 let contadorID = 0;
 
@@ -63,44 +65,45 @@ function editandoTexto(containerPai) {
 
 function excluirTarefa(containerPai, elementoRemover) {
     containerPai.removeChild(elementoRemover);
+    // elementoRemover.remove()
     listaTarefas.splice(containerPai.id, 1);
     atualizarStorage();
 }
 
-function inputTextElement(elementId) {
+export function inputTextElement(elementId) {
     let classPathText = "#" + elementId + " .tarefas-texto";
     let elementText = document.querySelector(classPathText);
     return elementText;
 }
 
-function pesquisar() {
-    let texto = document.querySelector("#entrada-pesquisa").value;
-    let listaFiltrada = listaTarefas.filter((elementId) => filterFunction(texto, elementId));
-    retirarElementos(listaTarefas);
-    adicionarElementos(listaFiltrada);
-}
+// function pesquisar() {
+//     let texto = document.querySelector("#entrada-pesquisa").value;
+//     let listaFiltrada = listaTarefas.filter((elementId) => filterFunction(texto, elementId));
+//     retirarElementos(listaTarefas);
+//     adicionarElementos(listaFiltrada);
+// }
 
-function filterFunction(value, elementID) {
-    let elementText = inputTextElement(elementID).value;
-    elementText = elementText.toLowerCase();
-    if (elementText.indexOf(value.toLowerCase()) != -1) {
-        return true;
-    }
-}
+// function filterFunction(value, elementID) {
+//     let elementText = inputTextElement(elementID).value;
+//     elementText = elementText.toLowerCase();
+//     if (elementText.indexOf(value.toLowerCase()) != -1) {
+//         return true;
+//     }
+// }
 
-function retirarElementos(lista) {
-    for (let cont = 0; cont < lista.length; cont++) {
-        let element = document.querySelector("#" + listaTarefas[cont]);
-        element.classList.add("ocultarElemento");
-    }
-}
+// function retirarElementos(lista) {
+//     for (let cont = 0; cont < lista.length; cont++) {
+//         let element = document.querySelector("#" + listaTarefas[cont]);
+//         element.classList.add("ocultarElemento");
+//     }
+// }
 
-function adicionarElementos(lista) {
-    for (let cont = 0; cont < lista.length; cont++) {
-        let element = document.querySelector("#" + lista[cont]);
-        element.classList.remove("ocultarElemento");
-    }
-}
+// function adicionarElementos(lista) {
+//     for (let cont = 0; cont < lista.length; cont++) {
+//         let element = document.querySelector("#" + lista[cont]);
+//         element.classList.remove("ocultarElemento");
+//     }
+// }
 
 function adicionarTarefaNaPagina() {
     let main = document.querySelector("#container-tarefas");
