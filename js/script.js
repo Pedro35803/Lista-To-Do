@@ -1,4 +1,4 @@
-import pesquisar from './pesquisar.js';
+import pesquisar from './search.js';
 
 let listaTarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 let contadorID = 0;
@@ -88,8 +88,8 @@ function adicionarTarefaNaPagina() {
 
     text.placeholder = "Digite aqui ";
 
-    edit.src = "./img/editar.svg";
-    delet.src = "./img/lixeira.svg";
+    edit.src = "./img/edit.svg";
+    delet.src = "./img/trash.svg";
 
     edit.alt = "Editar";
     delet.alt = "Excluir";
