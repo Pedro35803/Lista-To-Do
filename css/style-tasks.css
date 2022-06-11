@@ -1,0 +1,59 @@
+.tarefas {
+    background-color: white;
+    min-height: 40px;
+    width: 712.5px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tarefas-checkout {
+    all: unset;
+    border-radius: 25px;
+    width: 23px;
+    height: 23px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.tarefas-checkout:checked {
+    background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 37 37' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.5 0.5C8.5595 0.5 0.5 8.5595 0.5 18.5C0.5 28.4405 8.5595 36.5 18.5 36.5C28.4405 36.5 36.5 28.4405 36.5 18.5C36.5 8.5595 28.4405 0.5 18.5 0.5ZM28.5605 15.0605L17.2205 26.4005C16.9385 26.6825 16.5575 26.84 16.16 26.84C15.7625 26.84 15.38 26.6825 15.0995 26.4005L9.92 21.221C9.3335 20.6345 9.3335 19.6865 9.92 19.1C10.5065 18.5135 11.4545 18.5135 12.041 19.1L16.16 23.219L26.4395 12.9395C27.026 12.353 27.974 12.353 28.5605 12.9395C29.147 13.526 29.147 14.474 28.5605 15.0605Z' fill='black'/%3E%3C/svg%3E%0A");
+    background-position: center;
+}
+
+.tarefas-texto {
+    padding: 5px;
+    width: 500px;
+}
+
+.tarefas-texto:focus {
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.text-tarefa-concluida {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.tarefas-img {
+    height: 25px;
+    cursor: pointer;
+}
+
+.figure_new_task {
+    display: flex;
+    justify-content: end;
+}
+
+#adicionar_tarefa {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    margin: 0px 15px 10px 0px;
+}
+
+.ocultarElemento {
+    display: none;
+}
