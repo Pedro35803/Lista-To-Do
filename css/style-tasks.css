@@ -1,7 +1,8 @@
 .tarefas {
     background-color: white;
     min-height: 40px;
-    width: 712.5px;
+    width: 700px;
+    
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -11,8 +12,10 @@
 .tarefas-checkout {
     all: unset;
     border-radius: 25px;
+
     width: 23px;
     height: 23px;
+    
     border: 2px solid black;
     cursor: pointer;
 }
@@ -40,11 +43,6 @@
 .tarefas-img {
     height: 25px;
     cursor: pointer;
-}
-
-.figure_new_task {
-    display: flex;
-    justify-content: end;
 }
 
 #adicionar_tarefa {

@@ -1,13 +1,14 @@
 import pesquisar from './search.js';
 
 let listaTarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-let contadorID = 0;
+let contadorID = listaTarefas.length;
 
-const todasTarefasNaPagina = document.querySelectorAll(".tarefas-texto");
+let todasTarefasNaPagina = document.querySelectorAll(".tarefas-texto");
 
 todasTarefasNaPagina.forEach(tarefa => tarefa.addEventListener('blur', (tarefa) => {
     console.log(tarefa);
-    atualizarStorage;
+    console.log("Foco Desativado");
+    // atualizarStorage();
 }));
 
 document.querySelector("#botao-pesquisa").addEventListener("click", () => pesquisar())
@@ -22,7 +23,7 @@ document.querySelector("#adicionar_tarefa").addEventListener('click', () => {
     adicionarTarefaNaPagina();
 });
 
-document.querySelector("#container-principal-tarefas").addEventListener("click", (event) => {
+document.querySelector("#container-main-tarefas").addEventListener("click", (event) => {
     const elementoEvento = event.path[0];
     const elementoPai = event.path[1];
 
@@ -33,10 +34,10 @@ document.querySelector("#container-principal-tarefas").addEventListener("click",
     } else if (elementoEvento.classList.contains("tarefas-checkout")) {
         if (elementoEvento.checked) {
             mudarStatusDaTarefa(elementoPai);
-            moverContainer(elementoPai, "#container-tarefas-feitas");
+            moverContainer(elementoPai, "#tasks_done");
         } else {
             mudarStatusDaTarefa(elementoPai);
-            moverContainer(elementoPai, "#container-tarefas");
+            moverContainer(elementoPai, "#tasks");
         }
     }
 });
@@ -74,7 +75,7 @@ export function inputTextElement(elementId) {
 }
 
 function adicionarTarefaNaPagina() {
-    let main = document.querySelector("#container-tarefas");
+    let main = document.querySelector("#tasks");
     let section = document.createElement("section");
     let checkbox = document.createElement("input");
     let text = document.createElement("input");
@@ -107,4 +108,5 @@ function adicionarTarefaNaPagina() {
     main.appendChild(section);
 
     text.focus();
+    todasTarefasNaPagina = document.querySelectorAll(".tarefas-texto");
 }

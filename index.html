@@ -8,32 +8,34 @@
     <title>To-Do List</title>
 </head>
 <body>
-    <main class="flex">
-        <main class="container">
-            <h1>Lista To-Do</h1>
+    <main class="container container-main">
+        <div class="container container-secundary">
+            <header>
+                <h1>Lista To-Do</h1>
+            </header>
             
-            <main class="container-pesquisa">
+            <main class="container container-search">
                 <input type="text" placeholder="Pesquisa" id="entrada-pesquisa">
                 <button id="botao-pesquisa">
                     <img src="img/magnifier.svg" alt="Pesquisar">
                 </button>
             </main>
 
-            <main id="container-principal">
-                <main id="container-principal-tarefas">
-                    <main id="container-tarefas">
-                        <h2 class="container-principal-h2">Tarefas a fazer</h2>
+            <main id="container-main" class="container container-tasks">
+                <main id="container-main-tarefas">
+                    <main id="tasks" class="section-tasks">
+                        <h2>Tarefas a fazer</h2>
                     </main>
                     
-                    <main id="container-tarefas-feitas">
-                        <h2 class="container-principal-h2">Tarefas feitas</h2>
+                    <main id="tasks_done" class="section-tasks">
+                        <h2>Tarefas feitas</h2>
                     </main>
                 </main>
                 
-                <figure class="figure_new_task">
+                <figure class="add-task">
                     <img id="adicionar_tarefa" src="img/pluss_circle.svg" alt="Adicionar Tarefa">
                 </figure>
-            </main>
+            </div>
         </main>
     </main>
     <script type="module" src="js/script.js"></script>

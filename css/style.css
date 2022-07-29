@@ -4,6 +4,7 @@
     margin: 0px;
     border: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 body {
@@ -12,39 +13,61 @@ body {
     height: 100vh;
 }
 
-.flex {
-    height: 100%;
-    width: 100%;
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.7em;
+}
+
+.container {
     display: flex;
+}
+
+.container-main,
+.container-search {
     justify-content: center;
     align-items: center;
 }
 
-.container {
-    background: rgba(255, 255, 255, 0.34);
-    border-radius: 10px;
-    width: 900px;
-    height: 500px;
-
-    display: flex;
+.container-secundary,
+.container-tasks {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
 
-.container h1 {
-    font-size: 2.5em;
+#container-main-tarefas,
+.section-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.container-pesquisa {
-    background-color: #E5E5E5;
+.container-main {
+    height: 100%;
+    padding: 25px;
+}
+
+.container-secundary,
+.container-search {
     border-radius: 10px;
+}
+
+.container-secundary {
+    background: rgba(255, 255, 255, 0.34);
+    width: 900px;
+    height: 550px;
+    padding: 25px;
+}
+
+.container-search {
+    background-color: #E5E5E5;
+
+    margin: 10px 0px;
     width: 750px;
     height: 65px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #entrada-pesquisa {
@@ -75,36 +98,36 @@ body {
     cursor: pointer;
 }
 
-#container-principal {
+.container-tasks {
     background-color: #E5E5E5;
     width: 750px;
     height: 300px;
-    display: flex;
     flex-direction: column;
 }
 
-#container-principal-tarefas {
+#container-main-tarefas {
     height: 250px;
-    overflow: auto;
-    justify-content: space-around;
-}
-
-.container-principal-h2 {
-    margin: 10px 0px -10px 0px;
-}
-
-#container-tarefas {
     width: 100%;
-    /* height: 125px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+    overflow: auto;
+    padding: 15px;
 }
 
-#container-tarefas-feitas {
-    border-top: 1px solid blue;
-    margin: 22.5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.section-tasks {
+    width: 100%;
+}
+
+#tasks::after {
+    background-color: #0070E4;
+    display: block;
+    content: '';
+    
+    height: 2px;
+    width: 90%;
+    margin: 20px 0;
+}
+
+.add-task {
+    align-self: flex-end;
+    margin: 0px 5px 7px 0px;
 }
