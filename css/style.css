@@ -51,12 +51,15 @@ h2 {
 }
 
 .container-secundary,
-.container-search {
+.container-search, 
+.container-tasks,
+.tarefas {
     border-radius: 10px;
 }
 
 .container-secundary {
     background: rgba(255, 255, 255, 0.34);
+    min-width: 400px;
     width: 900px;
     height: 550px;
     padding: 25px;
@@ -64,17 +67,18 @@ h2 {
 
 .container-search {
     background-color: #E5E5E5;
+    height: 65px;
 
     margin: 10px 0px;
-    width: 750px;
-    height: 65px;
+    padding: 15px;
 }
 
 #entrada-pesquisa {
     font-size: 17.5px;
     width: 650px;
     height: 40px;
-    padding-left: 15px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 0 15px;
 }
 
 #entrada-pesquisa::placeholder {
@@ -89,6 +93,8 @@ h2 {
 
 #botao-pesquisa {
     background-color: white;
+    border-radius: 0px 10px 10px 0px;
+    padding-right: 15px;
     height: 40px;
     width: 50px;
 }
@@ -100,7 +106,6 @@ h2 {
 
 .container-tasks {
     background-color: #E5E5E5;
-    width: 750px;
     height: 300px;
     flex-direction: column;
 }
@@ -129,5 +134,17 @@ h2 {
 
 .add-task {
     align-self: flex-end;
-    margin: 0px 5px 7px 0px;
+}
+
+#adicionar_tarefa {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    margin: 0px 15px 10px 0px;
+}
+
+.container-search,
+.container-tasks,
+#entradas-pesquisa {
+    width: max(90%, 400px);
 }

@@ -1,9 +1,11 @@
 .tarefas {
     background-color: white;
-    min-height: 40px;
-    width: 700px;
+    width: max(95%, 250px);
+    height: 40px;
     
     margin-top: 20px;
+    padding: 0 15px;
+
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -14,6 +16,7 @@
     border-radius: 25px;
 
     width: 23px;
+    min-width: 23px;
     height: 23px;
     
     border: 2px solid black;
@@ -27,7 +30,9 @@
 
 .tarefas-texto {
     padding: 5px;
-    width: 500px;
+    width: max(90%, 500px);
+    min-width: 150px;
+    margin: 0 15px;
 }
 
 .tarefas-texto:focus {
@@ -45,11 +50,8 @@
     cursor: pointer;
 }
 
-#adicionar_tarefa {
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-    margin: 0px 15px 10px 0px;
+.editar {
+    margin-right: 15px;
 }
 
 .ocultarElemento {
