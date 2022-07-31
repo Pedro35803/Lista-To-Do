@@ -3,11 +3,15 @@ import pesquisar from './search.js';
 let listaTarefas = [];
 let contadorID = listaTarefas.length;
 
+const inputSearch = document.querySelector("#input_search");
+
 // Evento de pesquisa
 
 document.querySelector("#button_search").addEventListener("click", () => pesquisar())
-document.querySelector("#input_search").addEventListener("keydown", (event) => {
-    if (event.key == "Enter") {
+
+inputSearch.addEventListener("keyup", (event) => {
+    const evSpercial = ["Enter", "Backspace"];
+    if (evSpercial.indexOf(event.key) != -1 || event.key.length == 1) {
         pesquisar();
     }
 });
