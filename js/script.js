@@ -1,27 +1,25 @@
 import pesquisar from './search.js';
 
-let listaTarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+let listaTarefas = [];
 let contadorID = listaTarefas.length;
 
-let todasTarefasNaPagina = document.querySelectorAll(".tarefas-texto");
+// Evento de pesquisa
 
-todasTarefasNaPagina.forEach(tarefa => tarefa.addEventListener('blur', (tarefa) => {
-    console.log(tarefa);
-    console.log("Foco Desativado");
-    // atualizarStorage();
-}));
-
-document.querySelector("#botao-pesquisa").addEventListener("click", () => pesquisar())
-document.querySelector("#entrada-pesquisa").addEventListener("keydown", (event) => {
+document.querySelector("#button_search").addEventListener("click", () => pesquisar())
+document.querySelector("#input_search").addEventListener("keydown", (event) => {
     if (event.key == "Enter") {
         pesquisar();
     }
 });
 
+// Evento de clique no botão que adiciona tarefas
+
 document.querySelector("#adicionar_tarefa").addEventListener('click', () => {    
     contadorID += 1;
     adicionarTarefaNaPagina();
 });
+
+// Evento de clique dentro do container-tasks
 
 document.querySelector("#container-main-tarefas").addEventListener("click", (event) => {
     const elementoEvento = event.path[0];
@@ -42,9 +40,7 @@ document.querySelector("#container-main-tarefas").addEventListener("click", (eve
     }
 });
 
-function atualizarStorage() {
-    localStorage.tarefas = JSON.stringify(listaTarefas);
-}
+// Operações que acontecem o container tasks
 
 function mudarStatusDaTarefa(containerPai) {
     let text = inputTextElement(containerPai.id);
@@ -62,17 +58,22 @@ function editandoTexto(containerPai) {
     text.focus();
 }
 
+// Excluir a tarefa da lista
+
 function excluirTarefa(elementoRemover) {
     elementoRemover.remove();
     listaTarefas.splice(elementoRemover.id, 1);
-    atualizarStorage();
 }
 
-export function inputTextElement(elementId) {
+// Elemento de texto
+
+function inputTextElement(elementId) {
     let classPathText = "#" + elementId + " .tarefas-texto";
     let elementText = document.querySelector(classPathText);
     return elementText;
 }
+
+// Criar elemento na pagina
 
 function adicionarTarefaNaPagina() {
     let main = document.querySelector("#tasks");
@@ -108,5 +109,7 @@ function adicionarTarefaNaPagina() {
     main.appendChild(section);
 
     text.focus();
-    todasTarefasNaPagina = document.querySelectorAll(".tarefas-texto");
+    listaTarefas.push(section);
 }
+
+export default listaTarefas; 

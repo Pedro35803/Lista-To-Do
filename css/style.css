@@ -73,7 +73,7 @@ h2 {
     padding: 15px;
 }
 
-#entrada-pesquisa {
+#input_search {
     font-size: 17.5px;
     width: 650px;
     height: 40px;
@@ -81,17 +81,17 @@ h2 {
     padding: 0 15px;
 }
 
-#entrada-pesquisa::placeholder {
+#input_search::placeholder {
     color: black;
     font-weight: bold;
     font-size: 17.5px;
 }
 
-#entrada-pesquisa:focus {
+#input_search:focus {
     outline: 0;
 }
 
-#botao-pesquisa {
+#button_search {
     background-color: white;
     border-radius: 0px 10px 10px 0px;
     padding-right: 15px;
@@ -99,7 +99,7 @@ h2 {
     width: 50px;
 }
 
-#botao-pesquisa img {
+#button_search img {
     height: 20px;
     cursor: pointer;
 }
