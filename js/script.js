@@ -1,72 +1,57 @@
 import pesquisar from './search.js';
 
-let listaTarefas = [];
-let contadorID = listaTarefas.length;
+let listTask = [];
 
 const inputSearch = document.querySelector("#input_search");
 
 // Evento de pesquisa
 
-document.querySelector("#button_search").addEventListener("click", () => pesquisar())
+document.querySelector("#button_search").addEventListener("click", pesquisar)
 
 inputSearch.addEventListener("keyup", (event) => {
     const evSpercial = ["Enter", "Backspace"];
-    if (evSpercial.indexOf(event.key) != -1 || event.key.length == 1) {
+
+    const keyInEvSpercial = evSpercial.indexOf(event.key) != -1;
+    const keyIsCharacterUseful = event.key.length == 1;
+
+    if (keyInEvSpercial || keyIsCharacterUseful) 
         pesquisar();
-    }
 });
 
-// Evento de clique no botão que adiciona tarefas
+const buttonAddTask = document.querySelector("#adicionar_tarefa");
+buttonAddTask.addEventListener('click', addTaskInPage);
 
-document.querySelector("#adicionar_tarefa").addEventListener('click', () => {    
-    contadorID += 1;
-    adicionarTarefaNaPagina();
-});
+// Funções que acontecem ao fazer alguma operação no container task
 
-// Evento de clique dentro do container-tasks
-
-document.querySelector("#container-main-tarefas").addEventListener("click", (event) => {
-    const elementoEvento = event.path[0];
-    const elementoPai = event.path[1];
-
-    if (elementoEvento.classList.contains("excluir")) {
-        excluirTarefa(elementoPai);
-    } else if (elementoEvento.classList.contains("editar")) {
-        editandoTexto(elementoPai);
-    } else if (elementoEvento.classList.contains("tarefas-checkout")) {
-        if (elementoEvento.checked) {
-            mudarStatusDaTarefa(elementoPai);
-            moverContainer(elementoPai, "#tasks_done");
-        } else {
-            mudarStatusDaTarefa(elementoPai);
-            moverContainer(elementoPai, "#tasks");
-        }
-    }
-});
-
-// Operações que acontecem o container tasks
-
-function mudarStatusDaTarefa(containerPai) {
-    let text = inputTextElement(containerPai.id);
+function changeStatus(task) {
+    let text = inputTextElement(task.id);
     text.classList.toggle("text-tarefa-concluida");
 }
 
-function moverContainer(container, sectionEntrar) {
-    let novaSection = document.querySelector(sectionEntrar);
-    container.remove();
-    novaSection.appendChild(container);
+function toMoveContainer(task, idSection) {
+    let newSection = document.querySelector(idSection);
+    task.remove();
+    newSection.appendChild(task);
 }
 
-function editandoTexto(containerPai) {
-    let text = inputTextElement(containerPai.id);
-    text.focus();
+function handleCheckbox(checkbox, section) {
+    if (checkbox.checked) {
+        changeStatus(section);
+        toMoveContainer(section, "#tasks_done");
+    } else {
+        changeStatus(section);
+        toMoveContainer(section, "#tasks");
+    }
 }
 
-// Excluir a tarefa da lista
+function editText(textTask) {
+    textTask.disabled = false;
+    textTask.focus();
+}
 
-function excluirTarefa(elementoRemover) {
-    elementoRemover.remove();
-    listaTarefas.splice(elementoRemover.id, 1);
+function deletTask(task) {
+    task.remove();
+    listTask.splice(task.id, 1);
 }
 
 // Elemento de texto
@@ -79,7 +64,7 @@ function inputTextElement(elementId) {
 
 // Criar elemento na pagina
 
-function adicionarTarefaNaPagina() {
+function addTaskInPage() {
     let main = document.querySelector("#tasks");
     let section = document.createElement("section");
     let checkbox = document.createElement("input");
@@ -87,7 +72,8 @@ function adicionarTarefaNaPagina() {
     let edit = document.createElement("img");
     let delet = document.createElement("img");
     
-    section.id = "tarefa_" + contadorID;
+    const newId = listTask.length + 1;
+    section.id = "tarefa_" + newId;
 
     checkbox.type = "checkbox";
     text.type = "text";
@@ -105,6 +91,11 @@ function adicionarTarefaNaPagina() {
     text.classList.add("tarefas-texto");
     edit.classList.add("tarefas-img", "editar");
     delet.classList.add("tarefas-img", "excluir");
+
+    checkbox.addEventListener("click", () => handleCheckbox(checkbox, section));
+    delet.addEventListener("click", () => deletTask(section));
+    text.addEventListener("blur", () => text.disabled = true);
+    edit.addEventListener("click", () => editText(text));
     
     section.appendChild(checkbox);
     section.appendChild(text);
@@ -113,7 +104,7 @@ function adicionarTarefaNaPagina() {
     main.appendChild(section);
 
     text.focus();
-    listaTarefas.push(section);
+    listTask.push(section);
 }
 
-export default listaTarefas; 
+export default listTask; 
